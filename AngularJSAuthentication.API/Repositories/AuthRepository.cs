@@ -36,9 +36,9 @@ namespace AngularJSAuthentication.API.Repositories
             return user;
         }
 
-        public async Task<Client> FindClient(string clientId)
+        public Client FindClient(string clientId)
         {
-            return await _ctx.Clients.FindAsync(clientId);
+            return _ctx.Clients.Find(clientId);
         }
 
         public async Task<bool> AddRefreshToken(RefreshToken refreshToken)
