@@ -77,7 +77,7 @@ namespace AngularJSAuthentication.API.Repositories
             return await _ctx.SaveChangesAsync() > 0;
         }
 
-        public async Task<RefreshToken> FindRefreshToken(sbyte refreshTokenId)
+        public async Task<RefreshToken> FindRefreshToken(string refreshTokenId)
         {
             return await _ctx.RefreshTokens.FindAsync(refreshTokenId);
         }

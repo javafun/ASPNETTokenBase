@@ -60,9 +60,26 @@ namespace AngularJSAuthentication.API.Providers
             throw new NotImplementedException();
         }
 
-        public Task ReceiveAsync(AuthenticationTokenReceiveContext context)
+        public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
-            throw new NotImplementedException();
+            var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
+
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
+
+            string hashRefreshTokenId = Helper.GetHash(context.Token);
+
+            using (var repo = new AuthRepository())
+            {
+                var refreshToken = await repo.FindRefreshToken(hashRefreshTokenId);
+
+                if(refreshToken != null)
+                {
+                    //Get protectedTicket from refreshToken class
+                    context.DeserializeTicket(refreshToken.ProtectedTicket);
+
+                    var result = repo.RemoveRefreshToken(hashRefreshTokenId);
+                }
+            }
         }
     }
 }
