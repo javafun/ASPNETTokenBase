@@ -82,7 +82,7 @@ namespace AngularJSAuthentication.API.Repositories
             return await _ctx.RefreshTokens.FindAsync(refreshTokenId);
         }
 
-        public IEnumerable<RefreshToken> GetAllRefershTokens()
+        public IEnumerable<RefreshToken> GetAllRefreshTokens()
         {
             return _ctx.RefreshTokens;
         }
