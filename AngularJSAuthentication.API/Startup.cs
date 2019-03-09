@@ -20,10 +20,12 @@ namespace AngularJSAuthentication.API
             // so we’ll pass this object to method "Register" in "WebApiConfig" class.
             WebApiConfig.Register(config);
 
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
             // "UseWebApi" will be responsible to wire up ASP.NET Web API to our Owin server pipeline.
             app.UseWebApi(config);
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            
         }
 
         private void ConfigureOAuth(IAppBuilder app)
