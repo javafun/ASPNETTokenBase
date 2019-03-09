@@ -21,7 +21,7 @@ namespace AngularJSAuthentication.API.Providers
             // To allow CORS on the token middleware provider we need to add the header “Access-Control-Allow-Origin” 
             // to Owin context, if you forget this, generating the token will fail when you try to call it from 
             // your browser. 
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "" });
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
             using (var repo = new AuthRepository())
             {
