@@ -21,6 +21,7 @@ namespace AngularJSAuthentication.API.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(UserModel userModel)
         {
