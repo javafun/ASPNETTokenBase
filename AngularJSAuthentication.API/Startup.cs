@@ -35,7 +35,8 @@ namespace AngularJSAuthentication.API
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"), // token endpoint http://localhost:port/token
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                Provider = new SimpleAuthorizationServerProvider()
+                Provider = new SimpleAuthorizationServerProvider(),
+                RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
             // Token generation
